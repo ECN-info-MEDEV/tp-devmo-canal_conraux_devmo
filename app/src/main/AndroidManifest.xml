@@ -12,6 +12,9 @@
         android:theme="@style/Theme.MuscleRent"
         tools:targetApi="31">
         <activity
+            android:name=".NewReservationActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

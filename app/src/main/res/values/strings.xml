@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">MuscleRent</string>
     <string name="add_reservation">+</string>
+    <string name="date_label">Date :</string>
+    <string name="date_hint">dd/mm/yyyy</string>
+    <string name="hour_label">Hours :</string>
+    <string name="beginning_label">Beginning :</string>
+    <string name="beginning_hint">10h</string>
+    <string name="end_hint">12h</string>
+    <string name="end_label">End :</string>
+    <string name="submit_button">Submit</string>
 </resources>

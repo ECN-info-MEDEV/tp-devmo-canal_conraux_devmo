@@ -23,8 +23,8 @@ public class Reservation {
     @ColumnInfo(name = "horaire_fin")
     private String horaireFin;
 
-    public Reservation(String d, String hD, String hF) {
-        this.salleId = -1;
+    public Reservation(String d, String hD, String hF, int sId) {
+        this.salleId = sId;
         this.date = d;
         this.horaireDebut = hD;
         this.horaireFin = hF;

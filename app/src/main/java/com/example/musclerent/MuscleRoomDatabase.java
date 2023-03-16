@@ -2,9 +2,11 @@ package com.example.musclerent;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -26,11 +28,42 @@ public abstract class MuscleRoomDatabase extends RoomDatabase {
             synchronized (MuscleRoomDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                    MuscleRoomDatabase.class, "muscle_database")
+                                    MuscleRoomDatabase.class, "muscle_database").addCallback(sRoomDatabaseCallback)
                             .build();
                 }
             }
         }
         return INSTANCE;
     }
+
+    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
+
+            // If you want to keep data through app restarts,
+            // comment out the following block
+            databaseWriteExecutor.execute(() -> {
+                // Populate the database in the background.
+                // Salle populating
+                SalleDao dao = INSTANCE.salleDao();
+                dao.deleteAll();
+
+                Salle salle = new Salle("Salle Delacour", "44 rue des Jardins, 44000 Nantes", "Cette salle est très cool.");
+                dao.insert(salle);
+                salle = new Salle("Salle Argos", "44 rue des prés, 44300 Nantes", "Cette salle est super très cool.");;
+                dao.insert(salle);
+                salle = new Salle("Salle Thesee", "121 rue du Minotaure, 12322 Crete", "Cette salle est mythologiquement cool.");;
+                dao.insert(salle);
+
+                //Reservation populating
+                ReservationDao rdao = INSTANCE.reservationDao();
+                rdao.deleteAll();
+
+                Reservation reservation = new Reservation("25/03/2023", "13h", "15h", 1);
+                rdao.insert(reservation);
+
+            });
+        }
+    };
 }
