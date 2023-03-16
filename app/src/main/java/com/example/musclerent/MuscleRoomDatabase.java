@@ -13,6 +13,8 @@ import java.util.concurrent.Executors;
 public abstract class MuscleRoomDatabase extends RoomDatabase {
 
     public abstract ReservationDao reservationDao();
+    public abstract SalleDao salleDao();
+
 
     private static volatile MuscleRoomDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;

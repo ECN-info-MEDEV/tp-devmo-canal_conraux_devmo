@@ -1,16 +1,20 @@
 package com.example.musclerent;
 
+import static androidx.room.ForeignKey.CASCADE;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "reservation_table")
+@Entity(tableName = "reservation_table", foreignKeys = @ForeignKey(entity = Salle.class, parentColumns = "salle_id", childColumns = "salle_id", onDelete = CASCADE))
 public class Reservation {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "reservation_id")
     private int reservationId;
+    @ColumnInfo(name = "salle_id", index = true)
     private int salleId;
     @ColumnInfo(name = "date")
     private String date;
