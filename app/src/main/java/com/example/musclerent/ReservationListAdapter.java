@@ -20,7 +20,8 @@ public class ReservationListAdapter extends ListAdapter<Reservation, Reservation
     @Override
     public void onBindViewHolder(ReservationViewHolder holder, int position) {
         Reservation current = getItem(position);
-        holder.bind(current.getDate());
+        String bindingText = "Salle : ... \n" + "Adresse : ... \n" + "Date : " + current.getDate() + "\n" + "Horaires : " + current.getHoraireDebut() + " - " + current.getHoraireFin();
+        holder.bind(bindingText);
     }
 
     static class ReservationDiff extends DiffUtil.ItemCallback<Reservation> {

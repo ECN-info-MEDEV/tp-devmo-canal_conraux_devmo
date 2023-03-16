@@ -13,10 +13,15 @@ public class ReservationViewModel extends AndroidViewModel {
 
     private final LiveData<List<Reservation>> mAllReservations;
 
+    private SalleRepository mSalleRepository;
+    private final LiveData<List<Salle>> mAllSalles;
+
     public ReservationViewModel(Application application) {
         super(application);
         mRepository = new ReservationRepository(application);
         mAllReservations = mRepository.getAllReservations();
+        mSalleRepository = new SalleRepository(application);
+        mAllSalles = mSalleRepository.getAllSalles();
     }
 
     LiveData<List<Reservation>> getAllReservations() { return mAllReservations; }
