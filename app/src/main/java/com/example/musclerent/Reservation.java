@@ -30,8 +30,19 @@ public class Reservation {
         this.horaireFin = hF;
     }
 
+    public Reservation() {
+    }
+
+    public int getReservationId() {
+        return reservationId;
+    }
+
     public int getSalleId() {
         return salleId;
+    }
+
+    public void setReservationId(int reservationId) {
+        this.reservationId = reservationId;
     }
 
     public void setSalleId(int salleId) {

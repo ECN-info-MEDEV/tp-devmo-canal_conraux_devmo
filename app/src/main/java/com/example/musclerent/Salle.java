@@ -25,9 +25,16 @@ public class Salle {
         this.details = d;
     }
 
+    public Salle() {
+    }
+
+
+
     public int getSalleId() {
         return salleId;
     }
+
+
 
     public void setSalleId(int salleId) {
         this.salleId = salleId;

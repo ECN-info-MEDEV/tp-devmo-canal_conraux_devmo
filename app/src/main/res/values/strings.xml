@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MuscleRent</string>
+    <string name="add_reservation">+</string>
 </resources>
