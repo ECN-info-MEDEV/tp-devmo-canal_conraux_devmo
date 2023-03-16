@@ -1,5 +1,6 @@
 package com.example.musclerent;
 
+import android.app.Application;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
