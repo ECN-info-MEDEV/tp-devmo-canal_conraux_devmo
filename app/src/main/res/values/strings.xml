@@ -9,4 +9,5 @@
     <string name="end_hint">12h</string>
     <string name="end_label">End :</string>
     <string name="submit_button">Submit</string>
+    <string name="empty_not_saved">Some fields were empty, reservation not saved.</string>
 </resources>
