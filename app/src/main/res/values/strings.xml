@@ -12,4 +12,10 @@
     <string name="empty_not_saved">Some fields were empty, reservation not saved.</string>
     <string name="salle_label">Salle :</string>
     <string name="salle_hint">Enter gym number here</string>
+
+    <string-array name="salle_numbers">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
 </resources>
