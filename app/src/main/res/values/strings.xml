@@ -10,4 +10,6 @@
     <string name="end_label">End :</string>
     <string name="submit_button">Submit</string>
     <string name="empty_not_saved">Some fields were empty, reservation not saved.</string>
+    <string name="salle_label">Salle :</string>
+    <string name="salle_hint">Enter gym number here</string>
 </resources>

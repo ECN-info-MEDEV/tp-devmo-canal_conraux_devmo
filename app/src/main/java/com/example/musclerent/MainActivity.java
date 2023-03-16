@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Reservation reservation = new Reservation(data.getStringExtra(NewReservationActivity.EXTRA_REPLY_DATE),data.getStringExtra(NewReservationActivity.EXTRA_REPLY_BEGINNING), data.getStringExtra(NewReservationActivity.EXTRA_REPLY_END), 1);
+            Reservation reservation = new Reservation(data.getStringExtra(NewReservationActivity.EXTRA_REPLY_DATE),data.getStringExtra(NewReservationActivity.EXTRA_REPLY_BEGINNING), data.getStringExtra(NewReservationActivity.EXTRA_REPLY_END), Integer.valueOf(data.getStringExtra(NewReservationActivity.EXTRA_REPLY_SALLE)));
             mReservationViewModel.insert(reservation);
         } else {
             Toast.makeText(
