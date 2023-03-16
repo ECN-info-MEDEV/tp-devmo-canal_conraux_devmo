@@ -23,6 +23,7 @@ public class ReservationListAdapter extends ListAdapter<Reservation, Reservation
         Reservation current = getItem(position);
         String bindingText = "Salle : ... \n" + "Adresse : ... \n" + "Date : " + current.getDate() + "\n" + "Horaires : " + current.getHoraireDebut() + " - " + current.getHoraireFin();
         holder.bind(bindingText);
+        holder.deleteGiveTagId(String.valueOf(current.getReservationId()));
     }
 
     static class ReservationDiff extends DiffUtil.ItemCallback<Reservation> {

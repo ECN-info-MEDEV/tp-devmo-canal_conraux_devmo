@@ -27,11 +27,21 @@ class ReservationRepository {
         return mAllReservations;
     }
 
+    Reservation getReservationFromId(int id) {
+        return mReservationDao.getReservationFromId(id);
+    }
+
     // You must call this on a non-UI thread or your app will throw an exception. Room ensures
     // that you're not doing any long running operations on the main thread, blocking the UI.
     void insert(Reservation reservation) {
         MuscleRoomDatabase.databaseWriteExecutor.execute(() -> {
             mReservationDao.insert(reservation);
+        });
+    }
+
+    void delete(Reservation reservation) {
+        MuscleRoomDatabase.databaseWriteExecutor.execute(() -> {
+            mReservationDao.delete(reservation.getReservationId());
         });
     }
 }

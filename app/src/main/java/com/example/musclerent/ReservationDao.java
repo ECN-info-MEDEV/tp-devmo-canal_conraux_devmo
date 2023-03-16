@@ -18,7 +18,15 @@ public interface ReservationDao {
 
     @Query("DELETE FROM reservation_table")
     void deleteAll();
+    
+    
 
     @Query("SELECT * FROM reservation_table ORDER BY reservation_id ASC")
     LiveData<List<Reservation>> getReservations();
+
+    @Query("SELECT * FROM reservation_table WHERE reservation_id = :reservationId")
+    Reservation getReservationFromId(int reservationId);
+
+    @Query("DELETE FROM reservation_table WHERE reservation_id= :reservationId")
+    void delete(int reservationId);
 }

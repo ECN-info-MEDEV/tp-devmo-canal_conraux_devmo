@@ -3,6 +3,7 @@ package com.example.musclerent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +19,7 @@ class SalleViewHolder extends RecyclerView.ViewHolder {
     public void bind(String text) {
         salleItemView.setText(text);
     }
+
 
     static SalleViewHolder create(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext())

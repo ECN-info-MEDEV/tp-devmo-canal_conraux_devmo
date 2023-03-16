@@ -26,5 +26,11 @@ public class ReservationViewModel extends AndroidViewModel {
 
     LiveData<List<Reservation>> getAllReservations() { return mAllReservations; }
 
+    Reservation getReservationFromId(int id) {
+        return mRepository.getReservationFromId(id);
+    }
+
     public void insert(Reservation reservation) { mRepository.insert(reservation); }
+
+    public void delete(Reservation reservation) { mRepository.delete(reservation);}
 }
