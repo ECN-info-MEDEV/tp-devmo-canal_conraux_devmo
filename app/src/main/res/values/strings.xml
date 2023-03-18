@@ -12,6 +12,13 @@
     <string name="empty_not_saved">Some fields were empty, reservation not saved.</string>
     <string name="salle_label">Salle :</string>
     <string name="salle_hint">Enter gym number here</string>
+    <string name="reservation_information">Reservation Information</string>
+    <string name="gym_name">Gym Name :</string>
+    <string name="adress">Adress :</string>
+    <string name="hours">Hours :</string>
+    <string name="beginning">Beginning :</string>
+    <string name="end">End :</string>
+    <string name="gym_details">Gym details :</string>
 
     <string-array name="salle_numbers">
         <item>1</item>
