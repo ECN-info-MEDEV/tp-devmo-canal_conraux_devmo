@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mSalleViewModel = new ViewModelProvider(this).get(SalleViewModel.class);
+        mSalleViewModel.getAllSalles().observe(this, salles -> {
+        });
 
         //Send to new reservation when clicking on floating button
         FloatingActionButton floating = findViewById(R.id.fab);
@@ -146,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
 
         //Put information in intent as extras
         Intent intent = new Intent(MainActivity.this, ReservationInformationActivity.class);
-        intent.putExtra(EXTRA_MESSAGE, reservationId);
         intent.putExtra(GYM_NAME, nomSalle);
         intent.putExtra(GYM_ADRESS, adresseSalle);
         intent.putExtra(GYM_DETAILS, detailsSalle);

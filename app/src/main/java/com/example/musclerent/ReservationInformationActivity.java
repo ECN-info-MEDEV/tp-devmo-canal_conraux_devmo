@@ -40,13 +40,14 @@ public class ReservationInformationActivity extends AppCompatActivity {
 
         //Recuperer infos dans l'intent
         Intent intent = getIntent();
-        int reservationId = Integer.valueOf(intent.getStringExtra(MainActivity.EXTRA_MESSAGE));
         nomSalle = intent.getStringExtra(MainActivity.GYM_NAME);
         adresseSalle = intent.getStringExtra(MainActivity.GYM_ADRESS);
         detailsSalle = intent.getStringExtra(MainActivity.GYM_DETAILS);
         date = intent.getStringExtra(MainActivity.DATE);
-        beginning = intent.getStringExtra(MainActivity.BEGINNING);
         end = intent.getStringExtra(MainActivity.END);
+        beginning = intent.getStringExtra(MainActivity.BEGINNING);
+
+
 
         //Lier les infos récupérées aux textviews que l'on affiche
         mGymName = findViewById(R.id.gym_name_info);
