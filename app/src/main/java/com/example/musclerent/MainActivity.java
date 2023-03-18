@@ -10,11 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -50,16 +52,26 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        mSalleViewModel = new ViewModelProvider(this).get(SalleViewModel.class);
+        mSalleViewModel.getAllSalles().observe(this, salles -> {
+        });
+
+        LiveData<List<Salle>> salles = mSalleViewModel.getAllSalles();
         //Add data to dB when response
         mReservationViewModel = new ViewModelProvider(this).get(ReservationViewModel.class);
         mReservationViewModel.getAllReservations().observe(this, reservations -> {
             // Update the cached copy of the words in the adapter.
-            adapter.submitList(reservations);
+            List<Pair<Reservation, Pair<String,String>>> reservationsmore = new ArrayList<>();
+            for (Salle salle : salles.getValue()) {
+                for (Reservation reservation : reservations) {
+                    if (salle.getSalleId() == reservation.getSalleId()) {
+                        reservationsmore.add(Pair.create(reservation, Pair.create(salle.getNom(),salle.getAdresse())));
+                    }
+                }
+            }
+            adapter.submitList(reservationsmore);
         });
 
-        mSalleViewModel = new ViewModelProvider(this).get(SalleViewModel.class);
-        mSalleViewModel.getAllSalles().observe(this, salles -> {
-        });
 
         //Send to new reservation when clicking on floating button
         FloatingActionButton floating = findViewById(R.id.fab);
