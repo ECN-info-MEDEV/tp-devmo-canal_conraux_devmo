@@ -75,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
                 "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        List<Reservation> reservations = (List<Reservation>)mReservationViewModel.getAllReservations();
-                        for ( Reservation reservation : reservations) {
+                        LiveData<List<Reservation>> reservations = mReservationViewModel.getAllReservations();
+                        for ( Reservation reservation : reservations.getValue()) {
                             if (reservation.getReservationId() == reservationId) {
                                 mReservationViewModel.delete(reservation);
                             }
