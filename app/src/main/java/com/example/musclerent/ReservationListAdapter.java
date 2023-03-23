@@ -1,6 +1,5 @@
 package com.example.musclerent;
 
-import android.app.Application;
 import android.util.Pair;
 import android.view.ViewGroup;
 
@@ -9,6 +8,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
+/**
+ * Classe qui va faire le pont entre les données et l'ui
+ * Elle stocke les information des réservation et l'envoie à la vue
+ */
 public class ReservationListAdapter extends ListAdapter<Pair<Reservation, Pair<String,String>>, ReservationViewHolder> {
 
     private SalleViewModel mSalleViewModel;
@@ -22,6 +25,12 @@ public class ReservationListAdapter extends ListAdapter<Pair<Reservation, Pair<S
         return ReservationViewHolder.create(parent);
     }
 
+    /**
+     * Méthode qui est appelée pour afficher les données à la position spécifiée
+     * @param holder The ViewHolder which should be updated to represent the contents of the
+     *        item at the given position in the data set.
+     * @param position The position of the item within the adapter's data set.
+     */
     @Override
     public void onBindViewHolder(ReservationViewHolder holder, int position) {
 
@@ -40,13 +49,29 @@ public class ReservationListAdapter extends ListAdapter<Pair<Reservation, Pair<S
         holder.infoGiveTagId(String.valueOf(current.getReservationId()));
     }
 
+
+    /**
+     *  Classe qui va nous permettre certaines opérations sur les données
+     */
     static class ReservationDiff extends DiffUtil.ItemCallback<Pair<Reservation, Pair<String,String>>> {
 
+        /**
+         * Appelée pour savoir si deux object representent le meme item
+         * @param oldItem The item in the old list.
+         * @param newItem The item in the new list.
+         * @return
+         */
         @Override
         public boolean areItemsTheSame(@NonNull Pair<Reservation, Pair<String,String>> oldItem, @NonNull Pair<Reservation, Pair<String,String>> newItem) {
             return oldItem == newItem;
         }
 
+        /**
+         * Méthode appelée pour savoir si deux items ont les mêmes données
+         * @param oldItem The item in the old list.
+         * @param newItem The item in the new list.
+         * @return
+         */
         @Override
         public boolean areContentsTheSame(@NonNull Pair<Reservation, Pair<String,String>> oldItem, @NonNull Pair<Reservation, Pair<String,String>> newItem) {
             return oldItem.first.getReservationId() == newItem.first.getReservationId();

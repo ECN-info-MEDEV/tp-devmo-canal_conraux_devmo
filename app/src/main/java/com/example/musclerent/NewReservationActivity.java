@@ -18,6 +18,9 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Activité qui gère la création d'une nouvelle réservation
+ */
 public class NewReservationActivity extends AppCompatActivity implements
         AdapterView.OnItemSelectedListener {
 
@@ -34,6 +37,11 @@ public class NewReservationActivity extends AppCompatActivity implements
 
     private SalleViewModel mSalleViewModel;
 
+
+    /**
+     * Méthode onCreate qui va intialisé la plupart des entités de la classe (attibut, listener, ...)
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +102,13 @@ public class NewReservationActivity extends AppCompatActivity implements
 
     }
 
+    /**
+     * Méthode appelée qui set le numéro de la salle choisit lors de l'appuie sur l'une des options de la liste déroulante
+     * @param adapterView
+     * @param view
+     * @param i
+     * @param l
+     */
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int
             i, long l) {

@@ -8,18 +8,40 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+/**
+ * Classe qui définit l'entité Reservation
+ */
 @Entity(tableName = "reservation_table", foreignKeys = @ForeignKey(entity = Salle.class, parentColumns = "salle_id", childColumns = "salle_id", onDelete = CASCADE))
 public class Reservation {
 
+    /**
+     * Id de la reservation qui est auto-généré
+     */
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "reservation_id")
     private int reservationId;
+    
+    /**
+     * Id de la salle associée à la reservation
+     */
     @ColumnInfo(name = "salle_id", index = true)
     private int salleId;
+
+    /**
+     * Date de la réservation jj/mm/aaaa
+     */
     @ColumnInfo(name = "date")
     private String date;
+
+    /**
+     * Horaire de début de séance dans une chaine de caractère
+     */
     @ColumnInfo(name = "horaire_debut")
     private String horaireDebut;
+
+    /**
+     * Horaire de fin de séance dans une chaine de caractère
+     */
     @ColumnInfo(name = "horaire_fin")
     private String horaireFin;
 

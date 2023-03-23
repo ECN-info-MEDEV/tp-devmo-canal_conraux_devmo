@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
+/**
+ * Activité qui gère l'affichage des information à propos d'une réservation
+ */
 public class ReservationInformationActivity extends AppCompatActivity {
 
     //Modelviews to reach database
@@ -33,6 +36,11 @@ public class ReservationInformationActivity extends AppCompatActivity {
     private TextView mGymEnd;
     private TextView mGymDetails;
 
+
+    /**
+     * Méthode onCreate qui va intialisé la plupart des entités de la classe (attibut, listener, ...)
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

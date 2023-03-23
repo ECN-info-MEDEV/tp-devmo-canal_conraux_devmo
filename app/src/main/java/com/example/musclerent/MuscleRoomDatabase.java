@@ -11,6 +11,9 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * Classe qui implémente la base de donnée de lapplication
+ */
 @Database(entities = {Reservation.class, Salle.class}, version = 1, exportSchema = false)
 public abstract class MuscleRoomDatabase extends RoomDatabase {
 
@@ -23,6 +26,11 @@ public abstract class MuscleRoomDatabase extends RoomDatabase {
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
+    /**
+     * Méthode qui retourne une instance de MuscleRoomDatabase
+     * @param context le contexte de l'application
+     * @return
+     */
     static MuscleRoomDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (MuscleRoomDatabase.class) {
@@ -36,6 +44,9 @@ public abstract class MuscleRoomDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
+    /**
+     * Callback qui va initialisé la liste de reservation dans la base de données
+     */
     private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {

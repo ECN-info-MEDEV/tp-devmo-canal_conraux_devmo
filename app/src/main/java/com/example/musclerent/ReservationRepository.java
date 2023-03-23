@@ -6,6 +6,9 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
+/**
+ * Classe qui fait lien avec la source de données pour les données de type Reservation.
+ */
 class ReservationRepository {
 
     private ReservationDao mReservationDao;
@@ -33,12 +36,22 @@ class ReservationRepository {
 
     // You must call this on a non-UI thread or your app will throw an exception. Room ensures
     // that you're not doing any long running operations on the main thread, blocking the UI.
+
+    /**
+     * Méthode qui permet l'insertion d'une reservation dans la base de donnée
+     * @param reservation la réservation en question
+     */
     void insert(Reservation reservation) {
         MuscleRoomDatabase.databaseWriteExecutor.execute(() -> {
             mReservationDao.insert(reservation);
         });
     }
 
+
+    /**
+     * Méthode qui permet la suppression d'une reservation dans la base de donnée
+     * @param reservation la réservation en question
+     */
     void delete(Reservation reservation) {
         MuscleRoomDatabase.databaseWriteExecutor.execute(() -> {
             mReservationDao.delete(reservation.getReservationId());

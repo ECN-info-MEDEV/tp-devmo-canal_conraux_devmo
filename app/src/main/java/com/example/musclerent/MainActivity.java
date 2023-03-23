@@ -19,6 +19,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Cette classe contient le code pour l'activité principale de l'application qui affiche les reservation
+ * en cours, permet de voir leurs détails et de les supprimer et d'en ajouter des nouvelles.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private ReservationViewModel mReservationViewModel;
@@ -41,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
     public static final String GYM_DETAILS =
             "com.example.musclerent.extra.GYMDETAILS";
 
+    /**
+     * Méthode onCreate qui va intialisé la plupart des entités de la classe (attibut, listener, ...)
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +90,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * Cette méthode s'exécute lors du retour de l'activité lié a la réservation d'une séance
+     *
+     * @param requestCode permet de tester de quelle activité provient le résultat
+     * @param resultCode informe sur le résultat
+     * @param data  contient les données retournées par l'autre activité
+     */
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -97,6 +111,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Méthode qui va afficher une fenêtre demandant une confirmation lors de la suppression d'une reservation
+     * @param view bloc de base permettant la création d'un layout
+     */
     public void showDeleteAlert(View view) {
         int reservationId = Integer.parseInt((String)view.getTag());
         //Create the alert when deleting something
@@ -125,6 +143,10 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog alert11 = builder1.show();
     }
 
+    /**
+     * Méthode qui va lancer l'activité information de réservation en lui passant les paramètres de la réservation souhaitée par l'utilsateur
+     * @param view bloc de base permettant la création d'un layout
+     */
     public void goInformationIntent(View view) {
         //Takes salle and reservation info
         int reservationId = Integer.valueOf((String)view.getTag());

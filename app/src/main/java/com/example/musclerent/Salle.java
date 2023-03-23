@@ -7,6 +7,9 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+/**
+ * Classe qui définit l'entité Salle
+ */
 @Entity(tableName = "salle_table")
 public class Salle {
     @PrimaryKey(autoGenerate = true)

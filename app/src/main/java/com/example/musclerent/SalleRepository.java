@@ -6,6 +6,9 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
+/**
+ * Classe qui fait lien avec la source de données pour les données de type Salle.
+ */
 class SalleRepository {
 
     private SalleDao mSalleDao;
@@ -29,6 +32,10 @@ class SalleRepository {
 
     // You must call this on a non-UI thread or your app will throw an exception. Room ensures
     // that you're not doing any long running operations on the main thread, blocking the UI.
+    /**
+     * Méthode qui permet l'insertion d'une salle dans la base de donnée
+     * @param salle la salle en question
+     */
     void insert(Salle salle) {
         MuscleRoomDatabase.databaseWriteExecutor.execute(() -> {
             mSalleDao.insert(salle);

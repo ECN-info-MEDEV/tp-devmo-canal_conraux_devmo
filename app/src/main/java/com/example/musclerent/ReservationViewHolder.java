@@ -9,10 +9,15 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * Classe qui permet de créer un pattern facilitant l'affichage des reservation
+ *
+ */
 class ReservationViewHolder extends RecyclerView.ViewHolder {
     private final TextView reservationItemView;
     private final ImageButton deleteButton;
     private final ImageButton infoButton;
+
 
     private ReservationViewHolder(View itemView) {
         super(itemView);
@@ -27,6 +32,11 @@ class ReservationViewHolder extends RecyclerView.ViewHolder {
     public void deleteGiveTagId(String id) {deleteButton.setTag(id);}
     public void infoGiveTagId(String id) {infoButton.setTag(id);}
 
+    /**
+     * Méthode qui attache et return le view hodler à une fenêtre parente
+     * @param parent le layout parent
+     * @return
+     */
     static ReservationViewHolder create(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recyclerview_item, parent, false);
